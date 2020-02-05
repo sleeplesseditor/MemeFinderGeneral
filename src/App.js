@@ -14,6 +14,12 @@ class App extends Component {
     }
   }
 
+  searchMemes = (event) => {
+    this.setState({
+        searchText: event.target.value
+    })
+  }
+
   componentDidMount(){
     fetch("https://api.imgflip.com/get_memes")
     .then(response => response.json())
@@ -27,8 +33,14 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <SearchContainer />
-        <ResultsContainer memesArray={this.state.allMemes} />
+        <SearchContainer 
+          searchMemes={this.searchMemes}
+        />
+        <ResultsContainer 
+          memesArray={this.state.allMemes.filter(
+            meme => meme.name.toLowerCase().includes(this.state.searchText)).slice(0, 30)
+          } 
+        />
       </div>
     );
   }

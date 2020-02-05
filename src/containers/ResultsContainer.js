@@ -5,7 +5,6 @@ class ResultsContainer extends Component {
     render() {
         return (
             <div>
-                Results Container
                 {this.props.memesArray.map(meme => {
                     return <MemeCard key={meme.id} memeObject={meme}/>
                 })}
