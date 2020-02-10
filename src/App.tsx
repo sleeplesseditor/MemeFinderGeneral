@@ -4,11 +4,17 @@ import Header from './components/Header/Header';
 import SearchContainer from './containers/SearchContainer';
 import ResultsContainer from './containers/ResultsContainer';
 
-function App () {
-  const [allMemes, memeSetter] = useState([]);
-  const [searchText, textSetter] = useState("");
+interface Meme {
+  id: string,
+  name: string
+  url: string
+}
 
-  const searchMemes = (event) => {
+const App: React.FC = () => {
+  const [allMemes, memeSetter] = useState<Meme[]>([]);
+  const [searchText, textSetter] = useState<string>("");
+
+  const searchMemes = (event: any) => {
     textSetter(event.target.value)
   }
 
@@ -29,7 +35,7 @@ function App () {
           />
           <ResultsContainer 
             memesArray={allMemes.filter(
-              meme => meme.name.toLowerCase().includes(searchText)).slice(0, 32)
+              (meme: Meme) => meme.name.toLowerCase().includes(searchText)).slice(0, 32)
             } 
           />
         </div>

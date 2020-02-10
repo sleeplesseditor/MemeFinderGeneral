@@ -2,7 +2,7 @@
 import React from "react";
 import "./Header.scss";
 
-export default function Header() {
+const Header: React.FC = () => {
 
   return (
     <header className="Header">
@@ -12,3 +12,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;

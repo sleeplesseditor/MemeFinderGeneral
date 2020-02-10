@@ -1,7 +1,14 @@
 import React from 'react';
 import './MemeCard.scss';
 
-function MemeCard (props) {
+interface MemeCardProps {
+    memeObject: {
+        name: string,
+        url: string
+    }
+}
+
+function MemeCard (props: MemeCardProps) {
     return (
         <div className="meme-card">
             <h1 className="meme-card__heading">
